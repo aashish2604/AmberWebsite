@@ -13,7 +13,7 @@ class SharpContainer extends StatelessWidget {
     return Container(
       padding: padding,
       decoration: const BoxDecoration(color: Colors.white, boxShadow: [
-        BoxShadow(blurRadius: 8.0, spreadRadius: 2.0, color: Colors.black45),
+        BoxShadow(blurRadius: 8.0, spreadRadius: 2.0, color: Colors.black26),
       ]),
       child: child,
     );

@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
             ],
           ),
           debugShowCheckedModeBanner: false,
-          title: 'Concetto App',
+          title: 'Amber IIT(ISM)',
           navigatorKey: navigatorKey,
           theme: AppTheme().lightTheme(),
           home: const HomePage(),

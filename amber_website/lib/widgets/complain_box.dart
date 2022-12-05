@@ -1,4 +1,5 @@
 import 'package:amber_website/services/size_config.dart';
+import 'package:amber_website/services/theme/app_theme.dart';
 import 'package:amber_website/widgets/sharp_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,6 @@ class ComplainBox extends StatelessWidget {
     String name, roomNo, admissionNo, emailAddress, message;
     final formKey = GlobalKey<FormState>();
     double width = SizeConfig.instance.screenWidth;
-    final titleTextStyle = GoogleFonts.cinzel(fontSize: 34.0);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Form(
@@ -75,8 +75,13 @@ class ComplainBox extends StatelessWidget {
                   height: 40.0,
                 ),
                 Center(
-                  child:
-                      TextButton(onPressed: () {}, child: const Text('Submit')),
+                  child: TextButton(
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          print('object');
+                        }
+                      },
+                      child: const Text('Submit')),
                 )
               ]),
             ),

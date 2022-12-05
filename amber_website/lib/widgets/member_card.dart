@@ -1,3 +1,4 @@
+import 'package:amber_website/models/hec_members_model.dart';
 import 'package:amber_website/services/size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +6,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class MemberCard extends StatefulWidget {
-  const MemberCard({super.key});
+  final HecMembersModel hecMembersModel;
+  const MemberCard({required this.hecMembersModel, super.key});
 
   @override
   State<MemberCard> createState() => _MemberCardState();
@@ -19,7 +21,7 @@ class _MemberCardState extends State<MemberCard> {
     const TextStyle cardTitleStyle = TextStyle(fontSize: 14.0);
     const TextStyle subtitleStyle =
         TextStyle(fontSize: 18.0, color: Colors.grey);
-    double width = SizeConfig.instance.screenWidth;
+    double width = MediaQuery.of(context).size.width;
 
     return LayoutBuilder(builder: (context, constraints) {
       bool isMobile() {
@@ -31,9 +33,13 @@ class _MemberCardState extends State<MemberCard> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(icon),
-            Text(
-              " :  $content",
-              style: cardTitleStyle,
+            Flexible(
+              child: Container(
+                child: SelectableText(
+                  " :  $content",
+                  style: cardTitleStyle,
+                ),
+              ),
             )
           ],
         );
@@ -42,7 +48,7 @@ class _MemberCardState extends State<MemberCard> {
       return Padding(
         padding: EdgeInsets.symmetric(horizontal: isMobile() ? 16 : 0),
         child: Container(
-          width: isMobile() ? width : width * 0.6,
+          width: isMobile() ? width : width * 0.3,
           decoration: const BoxDecoration(color: Colors.white, boxShadow: [
             BoxShadow(
                 blurRadius: 10.0, spreadRadius: 1.0, color: Colors.black12),
@@ -72,20 +78,22 @@ class _MemberCardState extends State<MemberCard> {
                     const SizedBox(
                       height: 12.0,
                     ),
-                    const Text(
-                      'Sample Name',
+                    Text(
+                      widget.hecMembersModel.name,
                       style: nameStyle,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    const Text(
-                      'Sample Post',
+                    Text(
+                      widget.hecMembersModel.post,
                       style: subtitleStyle,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(
                       height: 12.0,
                     ),
                     Row(),
-                    iconText(Icons.phone, '9199892122'),
-                    iconText(Icons.email, 'some@email.com'),
+                    iconText(Icons.phone, widget.hecMembersModel.phoneNo),
+                    iconText(Icons.email, widget.hecMembersModel.email),
                     const SizedBox(
                       height: 8.0,
                     ),

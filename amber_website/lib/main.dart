@@ -1,4 +1,4 @@
-import 'package:amber_website/home/home_page.dart';
+import 'package:amber_website/screens/home_page.dart';
 import 'package:amber_website/services/size_config.dart';
 import 'package:amber_website/services/theme/app_theme.dart';
 import 'package:flutter/material.dart';

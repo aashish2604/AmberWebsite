@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "328440071001",
+    "project_id": "amberiitism",
+    "storage_bucket": "amberiitism.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328440071001:android:ef9f0aab6863a31d820248",
+        "android_client_info": {
+          "package_name": "com.example.amber_website"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328440071001-6mh35975cut4ncv2fctro7dhtf7ivhpt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSs8JlLYSAGtqiUG0ObRPBCm5Xbu2tknQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328440071001-6mh35975cut4ncv2fctro7dhtf7ivhpt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

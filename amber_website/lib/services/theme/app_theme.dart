@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final titleTextStyle =
-    GoogleFonts.gruppo(fontSize: 38.0, fontWeight: FontWeight.w800);
+    GoogleFonts.gruppo(fontSize: 40.0, fontWeight: FontWeight.w800);
 
 class AppTheme {
   ThemeData lightTheme() {

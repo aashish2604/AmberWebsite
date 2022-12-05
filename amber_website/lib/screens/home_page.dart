@@ -3,6 +3,7 @@ import 'package:amber_website/services/size_config.dart';
 import 'package:amber_website/services/theme/app_theme.dart';
 import 'package:amber_website/widgets/complain_box.dart';
 import 'package:amber_website/widgets/empty_widget.dart';
+import 'package:amber_website/widgets/home_appbar.dart';
 import 'package:amber_website/widgets/notice_List.dart';
 import 'package:amber_website/widgets/sharp_container.dart';
 import 'package:amber_website/widgets/warden_column.dart';
@@ -28,39 +29,11 @@ class _HomePageState extends State<HomePage> {
     return LayoutBuilder(builder: (context, constraints) {
       double constrainedHeight = constraints.maxHeight;
       double constrainedWidth = constraints.maxWidth;
+      var screenSize = MediaQuery.of(context).size;
       return Scaffold(
           appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(80.0),
-            child: AppBar(
-              actions: [
-                Center(
-                  child: TextButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const HecMembers()));
-                      },
-                      child: const Text(
-                        'Hec Members',
-                        style: TextStyle(color: Colors.white),
-                      )),
-                )
-              ],
-              title: Align(
-                alignment: Alignment.centerLeft,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    SizedBox(
-                      height: 15.0,
-                    ),
-                    Text('Amber Hostel'),
-                    Text('IIT(ISM) Dhanbad'),
-                  ],
-                ),
-              ),
-              centerTitle: false,
-            ),
-          ),
+              preferredSize: Size(screenSize.width, 1000),
+              child: const HomeAppbar()),
           body: SingleChildScrollView(
             child: Column(
               children: [

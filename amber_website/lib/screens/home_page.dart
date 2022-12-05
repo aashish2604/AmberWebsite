@@ -3,6 +3,7 @@ import 'package:amber_website/services/size_config.dart';
 import 'package:amber_website/services/theme/app_theme.dart';
 import 'package:amber_website/widgets/complain_box.dart';
 import 'package:amber_website/widgets/empty_widget.dart';
+import 'package:amber_website/widgets/footer.dart';
 import 'package:amber_website/widgets/home_appbar.dart';
 import 'package:amber_website/widgets/notice_List.dart';
 import 'package:amber_website/widgets/sharp_container.dart';
@@ -162,6 +163,7 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: height * 0.02,
                 ),
+                const Footer(),
               ],
             ),
           ));

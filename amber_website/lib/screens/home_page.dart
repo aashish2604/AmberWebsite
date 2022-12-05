@@ -1,4 +1,4 @@
-import 'package:amber_website/screens/all_notices.dart';
+import 'package:amber_website/screens/view_all_notices.dart';
 import 'package:amber_website/services/size_config.dart';
 import 'package:amber_website/services/theme/app_theme.dart';
 import 'package:amber_website/widgets/complain_box.dart';
@@ -91,7 +91,10 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   SizedBox(
                                       width: width * 0.85,
-                                      child: const Center(child: NoticeList()))
+                                      child: const Center(
+                                          child: NoticeList(
+                                        isViewAll: false,
+                                      )))
                                 ]),
                           ),
                           Positioned(

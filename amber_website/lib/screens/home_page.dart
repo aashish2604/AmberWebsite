@@ -1,6 +1,7 @@
 import 'package:amber_website/screens/view_all_notices.dart';
 import 'package:amber_website/services/size_config.dart';
 import 'package:amber_website/services/theme/app_theme.dart';
+import 'package:amber_website/widgets/carousal.dart';
 import 'package:amber_website/widgets/complain_box.dart';
 import 'package:amber_website/widgets/empty_widget.dart';
 import 'package:amber_website/widgets/footer.dart';
@@ -8,8 +9,10 @@ import 'package:amber_website/widgets/home_appbar.dart';
 import 'package:amber_website/widgets/notice_List.dart';
 import 'package:amber_website/widgets/sharp_container.dart';
 import 'package:amber_website/widgets/warden_column.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:amber_website/screens/hec_members.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,12 +27,13 @@ class _HomePageState extends State<HomePage> {
     double height = SizeConfig.instance.screenHeight;
     double width = SizeConfig.instance.screenWidth;
     String aboutUsDescription =
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of).";
+        "The Amber hostel is the second largest boys' hostel in the campus. With a capacity of around 1600 boys, it is home to the 2nd and 3rd year students of the institute. This four storeyed hostel building provides all kinds of facilities to students ranging from high speed Wi-fi and LAN to various kinds of indoor and outdoor games. A couple of canteens cater to the late-night snack needs of its residents, with two badminton courts available for their recreation. The hostel has a couple of canteens to cater to the late-night snack needs of the students, with a spacious cycle stand near the entrance.";
     const contentTextStyle = TextStyle(fontSize: 18.0);
 
     return LayoutBuilder(builder: (context, constraints) {
       double constrainedHeight = constraints.maxHeight;
       double constrainedWidth = constraints.maxWidth;
+      double screenWidth = MediaQuery.of(context).size.width;
       var screenSize = MediaQuery.of(context).size;
       return Scaffold(
           appBar: PreferredSize(
@@ -38,9 +42,48 @@ class _HomePageState extends State<HomePage> {
           body: SingleChildScrollView(
             child: Column(
               children: [
-                Container(
-                  color: Colors.orange,
-                  height: (height * 0.4),
+                Stack(
+                  children: [
+                    Container(
+                      height: (height * 0.4),
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('images/amber_dp.jpg'),
+                              fit: BoxFit.cover)),
+                    ),
+                    Container(
+                      color: Colors.black38,
+                      height: (height * 0.4),
+                    ),
+                    Positioned(
+                        top: (height * 0.3),
+                        left: 20.0,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            DefaultTextStyle(
+                              style: GoogleFonts.fugazOne(
+                                  fontSize: (screenWidth > 600) ? 50.0 : 40.0,
+                                  color:
+                                      const Color.fromARGB(255, 255, 222, 132)),
+                              child: AnimatedTextKit(
+                                repeatForever: true,
+                                animatedTexts: [
+                                  TypewriterAnimatedText('Amber Hostel',
+                                      speed: const Duration(milliseconds: 100)),
+                                  TypewriterAnimatedText("Senior Boys' Hostel",
+                                      speed: const Duration(milliseconds: 100)),
+                                ],
+                              ),
+                            ),
+                            Text('IIT(ISM) Dhanbad',
+                                style: GoogleFonts.fugazOne(
+                                    fontSize: 25.0,
+                                    color: const Color.fromARGB(
+                                        255, 255, 222, 132)))
+                          ],
+                        ))
+                  ],
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -141,10 +184,7 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: height * 0.02,
                 ),
-                Container(
-                  color: Colors.red,
-                  height: height * 0.4,
-                ),
+                const SlidingCarousal(),
                 SizedBox(
                   height: height * 0.02,
                 ),

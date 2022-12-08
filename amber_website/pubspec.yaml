@@ -43,6 +43,9 @@ dependencies:
   firebase_core: ^2.3.0
   cloud_firestore: ^4.1.0
   intl: ^0.17.0
+  animated_text_kit: ^4.2.2
+  carousel_slider: ^4.1.1
+  font_awesome_flutter: ^10.3.0
 
 dev_dependencies:
   flutter_test:

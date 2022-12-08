@@ -1,6 +1,9 @@
 import 'package:amber_website/models/hec_members_model.dart';
 import 'package:amber_website/models/warden_model.dart';
 import 'package:amber_website/services/size_config.dart';
+import 'package:amber_website/widgets/loading.dart';
+import 'package:amber_website/widgets/network_image_error.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -17,6 +20,8 @@ class WardenCard extends StatefulWidget {
 class _WardenCardState extends State<WardenCard> {
   @override
   Widget build(BuildContext context) {
+    String errorImage =
+        "https://firebasestorage.googleapis.com/v0/b/amberiitism.appspot.com/o/hec_members%2FAashish.png?alt=media&token=ab84535c-ec09-48d8-bc32-47120449b1b6";
     const TextStyle nameStyle =
         TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600);
     const TextStyle cardTitleStyle = TextStyle(fontSize: 14.0);
@@ -71,9 +76,26 @@ class _WardenCardState extends State<WardenCard> {
                   children: [
                     CircleAvatar(
                       radius: isMobile() ? 52.0 : 72.0,
-                      backgroundColor: Colors.white,
+                      backgroundColor: Color.fromRGBO(255, 255, 255, 1),
                       child: CircleAvatar(
+                        backgroundColor: Colors.white,
                         radius: isMobile() ? 50.0 : 70.0,
+                        child: CachedNetworkImage(
+                          imageUrl: widget.wardenModel.image.contains('https')
+                              ? widget.wardenModel.image
+                              : errorImage,
+                          fit: BoxFit.fill,
+                          placeholder: (context, url) =>
+                              const Center(child: Loading()),
+                          errorWidget: (context, url, error) {
+                            print(error.toString());
+                            try {
+                              return const CachedNetworkImageError();
+                            } on Exception catch (e) {
+                              return const CachedNetworkImageError();
+                            }
+                          },
+                        ),
                       ),
                     ),
                     const SizedBox(

@@ -21,7 +21,7 @@ class Footer extends StatelessWidget {
         children: [
           const CircleAvatar(
             radius: 50.0,
-            backgroundImage: AssetImage('images/ISM_logo.jpg'),
+            backgroundImage: AssetImage('images/ISM_logo.JPG'),
           ),
           SizedBox(
             width: width * 0.2,

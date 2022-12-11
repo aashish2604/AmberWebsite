@@ -65,7 +65,7 @@ class _WardenCardState extends State<WardenCard> {
                 height: isMobile() ? 72.0 : 92.0,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('images/card_background.jpg'),
+                        image: AssetImage('images/card_background.JPG'),
                         fit: BoxFit.fill)),
               ),
               Container(

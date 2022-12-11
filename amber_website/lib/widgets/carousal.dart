@@ -10,10 +10,10 @@ class SlidingCarousal extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     List<String> images = [
-      'images/amber_dp.jpg',
-      'images/card_background.jpg',
-      'images/amber_dp.jpg',
-      'images/amber_dp.jpg'
+      'images/amber_dp.JPG',
+      'images/card_background.JPG',
+      'images/amber_dp.JPG',
+      'images/amber_dp.JPG'
     ];
 
     return CarouselSlider(

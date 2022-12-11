@@ -23,7 +23,7 @@ class _HomeAppbarState extends State<HomeAppbar> {
         child: Row(
           children: [
             const CircleAvatar(
-              backgroundImage: AssetImage('images/ISM_logo.jpg'),
+              backgroundImage: AssetImage('images/ISM_logo.JPG'),
               radius: 26.0,
             ),
             const Expanded(child: SizedBox()),

@@ -21,7 +21,7 @@ class _WardenCardState extends State<WardenCard> {
   @override
   Widget build(BuildContext context) {
     String errorImage =
-        "https://firebasestorage.googleapis.com/v0/b/amberiitism.appspot.com/o/hec_members%2FAashish.png?alt=media&token=ab84535c-ec09-48d8-bc32-47120449b1b6";
+        "https://user-images.githubusercontent.com/24841626/43708951-e86d62b2-996b-11e8-9d2c-ee2599db49e7.png";
     const TextStyle nameStyle =
         TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600);
     const TextStyle cardTitleStyle = TextStyle(fontSize: 14.0);

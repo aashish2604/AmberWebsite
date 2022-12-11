@@ -3,6 +3,7 @@ import 'package:amber_website/services/theme/custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeAppbar extends StatefulWidget {
   const HomeAppbar({super.key});
@@ -22,9 +23,18 @@ class _HomeAppbarState extends State<HomeAppbar> {
         padding: const EdgeInsets.all(20),
         child: Row(
           children: [
-            const CircleAvatar(
-              backgroundImage: AssetImage('images/ISM_logo.JPG'),
-              radius: 26.0,
+            MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: () {
+                  Uri uri = Uri.parse('https://www.iitism.ac.in/iitismnew/');
+                  launchUrl(uri);
+                },
+                child: const CircleAvatar(
+                  backgroundImage: AssetImage('images/ISM_logo.JPG'),
+                  radius: 26.0,
+                ),
+              ),
             ),
             const Expanded(child: SizedBox()),
             InkWell(

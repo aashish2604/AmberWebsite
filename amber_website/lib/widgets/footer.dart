@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Footer extends StatelessWidget {
   const Footer({super.key});
@@ -19,9 +20,18 @@ class Footer extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          const CircleAvatar(
-            radius: 50.0,
-            backgroundImage: AssetImage('images/ISM_logo.JPG'),
+          MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: GestureDetector(
+              onTap: () {
+                Uri uri = Uri.parse('https://www.iitism.ac.in/iitismnew/');
+                launchUrl(uri);
+              },
+              child: const CircleAvatar(
+                radius: 50.0,
+                backgroundImage: AssetImage('images/ISM_logo.JPG'),
+              ),
+            ),
           ),
           SizedBox(
             width: width * 0.2,
@@ -78,12 +88,21 @@ class Footer extends StatelessWidget {
                             size: isMobile ? 18.0 : null,
                           )),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Uri uri = Uri.parse(
+                                'https://www.instagram.com/amberiitism/');
+                            launchUrl(uri);
+                          },
                           icon: Icon(FontAwesomeIcons.instagram,
                               color: Colors.white,
                               size: isMobile ? 18.0 : null)),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Uri uri = Uri(
+                                scheme: 'mailto',
+                                path: 'amber.heciitism@gmail.com');
+                            launchUrl(uri);
+                          },
                           icon: Icon(Icons.mail,
                               color: Colors.white,
                               size: isMobile ? 18.0 : null)),

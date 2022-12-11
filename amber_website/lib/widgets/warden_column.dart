@@ -57,6 +57,7 @@ class WardenColumn extends StatelessWidget {
                                 mainAxisSpacing: 12.0);
                     return (otherWardenData.isNotEmpty)
                         ? GridView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             itemCount: otherWardenData.length,
                             gridDelegate: gridOption,

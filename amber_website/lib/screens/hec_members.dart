@@ -156,6 +156,7 @@ class MemberList extends StatelessWidget {
                   mainAxisSpacing: 12.0);
       return (data.isNotEmpty)
           ? GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: data.length,
               gridDelegate: gridOption,

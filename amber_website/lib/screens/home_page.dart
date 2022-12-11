@@ -45,7 +45,9 @@ class _HomePageState extends State<HomePage> {
                 Stack(
                   children: [
                     Container(
-                      height: (height * 0.4),
+                      height: screenWidth > 600
+                          ? (height * 0.4)
+                          : (screenSize.height * 0.7),
                       decoration: const BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage('images/amber_dp.JPG'),
@@ -53,10 +55,14 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Container(
                       color: Colors.black38,
-                      height: (height * 0.4),
+                      height: screenWidth > 600
+                          ? (height * 0.4)
+                          : (screenSize.height * 0.7),
                     ),
                     Positioned(
-                        top: (height * 0.3),
+                        top: screenWidth > 600
+                            ? (height * 0.3)
+                            : (screenSize.height * 0.58),
                         left: 20.0,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

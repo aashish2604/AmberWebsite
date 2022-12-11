@@ -12,11 +12,13 @@ Future<void> showNoticeDialog(BuildContext context, NoticeModel data) {
     context: context,
     barrierDismissible: false, // user must tap button!
     builder: (_) {
+      bool isMobile = (MediaQuery.of(context).size.width < 600);
+      double screenWidth = MediaQuery.of(context).size.width;
       return AlertDialog(
         scrollable: true,
         title: ConstrainedBox(
             constraints: BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width * 0.5),
+                maxWidth: isMobile ? screenWidth * 0.9 : screenWidth * 0.5),
             child: SelectableText(
               data.title,
               style:
@@ -24,7 +26,7 @@ Future<void> showNoticeDialog(BuildContext context, NoticeModel data) {
             )),
         content: ConstrainedBox(
           constraints: BoxConstraints(
-              maxWidth: MediaQuery.of(context).size.width * 0.5,
+              maxWidth: isMobile ? screenWidth * 0.9 : screenWidth * 0.5,
               maxHeight: MediaQuery.of(context).size.height * 0.7),
           child: SingleChildScrollView(
             child: Column(

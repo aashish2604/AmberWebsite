@@ -1,4 +1,5 @@
 import 'package:amber_website/screens/hec_members.dart';
+import 'package:amber_website/screens/leaving_form.dart';
 import 'package:amber_website/services/theme/custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -13,7 +14,7 @@ class HomeAppbar extends StatefulWidget {
 }
 
 class _HomeAppbarState extends State<HomeAppbar> {
-  bool _isHovering = false;
+  List<bool> _isHovering = [false, false];
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -40,7 +41,7 @@ class _HomeAppbarState extends State<HomeAppbar> {
             InkWell(
               onHover: (value) {
                 setState(() {
-                  _isHovering = value;
+                  _isHovering[0] = value;
                 });
               },
               onTap: () {
@@ -52,7 +53,7 @@ class _HomeAppbarState extends State<HomeAppbar> {
                 children: [
                   const Text(
                     'Hec Members',
-                    style: TextStyle(color: Colors.white, fontSize: 18.0),
+                    style: TextStyle(color: Colors.white, fontSize: 16.0),
                   ),
                   const SizedBox(height: 5),
                   // For showing an underline on hover
@@ -60,7 +61,43 @@ class _HomeAppbarState extends State<HomeAppbar> {
                     maintainAnimation: true,
                     maintainState: true,
                     maintainSize: true,
-                    visible: _isHovering,
+                    visible: _isHovering[0],
+                    child: Container(
+                      height: 2,
+                      width: 30,
+                      color: Colors.white,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            const SizedBox(
+              width: 20.0,
+            ),
+            InkWell(
+              onHover: (value) {
+                setState(() {
+                  _isHovering[1] = value;
+                });
+              },
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const LeavingForm()));
+              },
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text(
+                    'Leaving Form',
+                    style: TextStyle(color: Colors.white, fontSize: 16.0),
+                  ),
+                  const SizedBox(height: 5),
+                  // For showing an underline on hover
+                  Visibility(
+                    maintainAnimation: true,
+                    maintainState: true,
+                    maintainSize: true,
+                    visible: _isHovering[1],
                     child: Container(
                       height: 2,
                       width: 30,

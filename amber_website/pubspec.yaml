@@ -46,6 +46,9 @@ dependencies:
   animated_text_kit: ^4.2.2
   carousel_slider: ^4.1.1
   font_awesome_flutter: ^10.3.0
+  syncfusion_flutter_pdf: ^20.3.61
+  path_provider: ^2.0.11
+  universal_html: ^2.0.8
 
 dev_dependencies:
   flutter_test:

@@ -1,27 +1,35 @@
+import 'package:amber_website/models/leaving_fom_model.dart';
+import 'package:amber_website/repository/leaving_form_repo.dart';
 import 'package:amber_website/services/pdf_creator.dart';
 import 'package:amber_website/services/theme/app_theme.dart';
 import 'package:amber_website/widgets/sharp_container.dart';
 import 'package:flutter/material.dart';
 
-class LeavingForm extends StatelessWidget {
+class LeavingForm extends StatefulWidget {
   const LeavingForm({super.key});
 
   @override
+  State<LeavingForm> createState() => _LeavingFormState();
+}
+
+class _LeavingFormState extends State<LeavingForm> {
+  final formkey = GlobalKey<FormState>();
+  late String roomNo,
+      name,
+      address,
+      admissionNo,
+      semester,
+      course,
+      branch,
+      leaveDate,
+      returndate,
+      vacation,
+      phoneNo;
+  String otherRemarks = '';
+  @override
   Widget build(BuildContext context) {
-    final formkey = GlobalKey<FormState>();
     double width = MediaQuery.of(context).size.width;
-    late String roomNo,
-        name,
-        address,
-        admissionNo,
-        semester,
-        course,
-        branch,
-        leaveDate,
-        returndate,
-        vacation,
-        phoneNo;
-    String otherRemarks = '';
+    bool isMobile = width < 600;
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -30,7 +38,7 @@ class LeavingForm extends StatelessWidget {
               key: formkey,
               child: Center(
                 child: SizedBox(
-                  width: width * 0.6,
+                  width: isMobile ? width : width * 0.6,
                   child: SharpContainer(
                     padding: EdgeInsets.symmetric(
                         horizontal: width * 0.05, vertical: 30.0),
@@ -148,19 +156,72 @@ class LeavingForm extends StatelessWidget {
                       TextButton(
                           onPressed: () async {
                             if (formkey.currentState!.validate()) {
-                              await createPdf(
-                                  roomNo,
-                                  name,
-                                  address,
-                                  admissionNo,
-                                  semester,
-                                  course,
-                                  branch,
-                                  leaveDate,
-                                  returndate,
-                                  vacation,
-                                  phoneNo,
-                                  otherRemarks);
+                              LeavingFormModel formModel = LeavingFormModel(
+                                  roomNo: roomNo,
+                                  name: name,
+                                  address: address,
+                                  admissionNo: admissionNo,
+                                  semester: semester,
+                                  course: course,
+                                  branch: branch,
+                                  leaveDate: leaveDate,
+                                  returndate: returndate,
+                                  vacation: vacation,
+                                  phoneNo: phoneNo,
+                                  otherRemarks: otherRemarks);
+                              await showDialog(
+                                  context: context,
+                                  builder: (_) {
+                                    bool isMobile =
+                                        (MediaQuery.of(context).size.width <
+                                            600);
+                                    double screenWidth =
+                                        MediaQuery.of(context).size.width;
+                                    LeavingFormRepository()
+                                        .uploadForm(formModel)
+                                        .then((value) {
+                                      setState(() async {
+                                        Navigator.of(context).pop();
+                                        if (value) {
+                                          await createPdf(
+                                                  roomNo,
+                                                  name,
+                                                  address,
+                                                  admissionNo,
+                                                  semester,
+                                                  course,
+                                                  branch,
+                                                  leaveDate,
+                                                  returndate,
+                                                  vacation,
+                                                  phoneNo,
+                                                  otherRemarks)
+                                              .then((value) =>
+                                                  Navigator.pop(context));
+                                        }
+                                      });
+                                    });
+                                    return AlertDialog(
+                                        scrollable: false,
+                                        title: ConstrainedBox(
+                                            constraints: BoxConstraints(
+                                                maxWidth: isMobile
+                                                    ? screenWidth * 0.9
+                                                    : screenWidth * 0.5),
+                                            child: const Text('Uploading')),
+                                        content: ConstrainedBox(
+                                          constraints: BoxConstraints(
+                                              maxWidth: isMobile
+                                                  ? screenWidth * 0.9
+                                                  : screenWidth * 0.5,
+                                              maxHeight: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.2),
+                                          child: const Center(
+                                              child: Text('Please wait.....')),
+                                        ));
+                                  });
                             }
                           },
                           child: const Text('Submit')),

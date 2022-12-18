@@ -21,7 +21,7 @@ class _WardenCardState extends State<WardenCard> {
   @override
   Widget build(BuildContext context) {
     String errorImage =
-        "https://user-images.githubusercontent.com/24841626/43708951-e86d62b2-996b-11e8-9d2c-ee2599db49e7.png";
+        "https://firebasestorage.googleapis.com/v0/b/amberiitism.appspot.com/o/43708951-e86d62b2-996b-11e8-9d2c-ee2599db49e7.png?alt=media&token=964231e6-cda9-41ee-b488-ba9f22edc1cb";
     const TextStyle nameStyle =
         TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600);
     const TextStyle cardTitleStyle = TextStyle(fontSize: 14.0);
@@ -80,22 +80,31 @@ class _WardenCardState extends State<WardenCard> {
                       child: CircleAvatar(
                         backgroundColor: Colors.white,
                         radius: isMobile() ? 50.0 : 70.0,
-                        child: CachedNetworkImage(
-                          imageUrl: widget.wardenModel.image.contains('https')
+                        onBackgroundImageError: (exception, stackTrace) {
+                          print(
+                              '${exception.toString()} occured at ${stackTrace.toString()}');
+                        },
+                        backgroundImage: CachedNetworkImageProvider(
+                          widget.wardenModel.image.contains('https')
                               ? widget.wardenModel.image
                               : errorImage,
-                          fit: BoxFit.fill,
-                          placeholder: (context, url) =>
-                              const Center(child: Loading()),
-                          errorWidget: (context, url, error) {
-                            print(error.toString());
-                            try {
-                              return const CachedNetworkImageError();
-                            } on Exception catch (e) {
-                              return const CachedNetworkImageError();
-                            }
-                          },
                         ),
+                        // child: CachedNetworkImage(
+                        //   imageUrl: widget.wardenModel.image.contains('https')
+                        //       ? widget.wardenModel.image
+                        //       : errorImage,
+                        //   fit: BoxFit.fill,
+                        //   placeholder: (context, url) =>
+                        //       const Center(child: Loading()),
+                        //   errorWidget: (context, url, error) {
+                        //     print(error.toString());
+                        //     try {
+                        //       return const CachedNetworkImageError();
+                        //     } on Exception catch (e) {
+                        //       return const CachedNetworkImageError();
+                        //     }
+                        //   },
+                        // ),
                       ),
                     ),
                     const SizedBox(

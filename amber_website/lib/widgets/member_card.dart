@@ -22,7 +22,7 @@ class _MemberCardState extends State<MemberCard> {
         TextStyle(fontSize: 18.0, color: Colors.grey);
     double width = MediaQuery.of(context).size.width;
     String errorImage =
-        "https://user-images.githubusercontent.com/24841626/43708951-e86d62b2-996b-11e8-9d2c-ee2599db49e7.png";
+        "https://firebasestorage.googleapis.com/v0/b/amberiitism.appspot.com/o/43708951-e86d62b2-996b-11e8-9d2c-ee2599db49e7.png?alt=media&token=964231e6-cda9-41ee-b488-ba9f22edc1cb";
 
     return LayoutBuilder(builder: (context, constraints) {
       bool isMobile() {
@@ -75,23 +75,36 @@ class _MemberCardState extends State<MemberCard> {
                       child: CircleAvatar(
                         backgroundColor: Colors.white,
                         radius: isMobile() ? 50.0 : 70.0,
-                        child: CachedNetworkImage(
-                          imageUrl:
-                              widget.hecMembersModel.image.contains('https')
-                                  ? widget.hecMembersModel.image
-                                  : errorImage,
-                          fit: BoxFit.fill,
-                          placeholder: (context, url) =>
-                              const Center(child: Loading()),
-                          errorWidget: (context, url, error) {
-                            print(error.toString());
-                            try {
-                              return const CachedNetworkImageError();
-                            } on Exception catch (e) {
-                              return const CachedNetworkImageError();
-                            }
-                          },
+                        onBackgroundImageError: (exception, stackTrace) {
+                          print(
+                              '${exception.toString()} occured at ${stackTrace.toString()}');
+                        },
+                        backgroundImage: CachedNetworkImageProvider(
+                          widget.hecMembersModel.image.contains('https')
+                              ? widget.hecMembersModel.image
+                              : errorImage,
                         ),
+                        // child: Container(
+                        //   decoration:
+                        //       const BoxDecoration(shape: BoxShape.circle),
+                        //   child: CachedNetworkImage(
+                        //     imageUrl:
+                        //         widget.hecMembersModel.image.contains('https')
+                        //             ? widget.hecMembersModel.image
+                        //             : errorImage,
+                        //     fit: BoxFit.fill,
+                        //     placeholder: (context, url) =>
+                        //         const Center(child: Loading()),
+                        //     errorWidget: (context, url, error) {
+                        //       print(error.toString());
+                        //       try {
+                        //         return const CachedNetworkImageError();
+                        //       } on Exception catch (e) {
+                        //         return const CachedNetworkImageError();
+                        //       }
+                        //     },
+                        //   ),
+                        // ),
                       ),
                     ),
                     const SizedBox(

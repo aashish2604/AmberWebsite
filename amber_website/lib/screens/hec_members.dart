@@ -31,9 +31,9 @@ class HecMembers extends StatelessWidget {
           messCommittee.add(data);
         } else if (data.committee == 'Technical') {
           techCommittee.add(data);
-        } else if (data.committee == 'Maintainence') {
+        } else if (data.committee == 'Maintenance') {
           maintainenceCommittee.add(data);
-        } else if (data.committee == 'Sports') {
+        } else if (data.committee == 'Sports & Cultural') {
           sportsCommittee.add(data);
         }
       }
@@ -100,7 +100,7 @@ class HecMembers extends StatelessWidget {
                         const SizedBox(
                           height: 26.0,
                         ),
-                        Text('Maintainence Committee',
+                        Text('Maintenance Committee',
                             style: subHeadingTextStyle),
                         const SizedBox(
                           height: 20.0,
@@ -109,7 +109,8 @@ class HecMembers extends StatelessWidget {
                         const SizedBox(
                           height: 26.0,
                         ),
-                        Text('Sports Committee', style: subHeadingTextStyle),
+                        Text('Sports & Cultural Committee',
+                            style: subHeadingTextStyle),
                         const SizedBox(
                           height: 20.0,
                         ),

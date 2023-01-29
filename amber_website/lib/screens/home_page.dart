@@ -153,7 +153,11 @@ class _HomePageState extends State<HomePage> {
                             ? Flexible(
                                 flex: 4,
                                 child: Container(
-                                  color: Colors.black87,
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image:
+                                              AssetImage('images/about_us.PNG'),
+                                          fit: BoxFit.fill)),
                                   height: height * 0.2,
                                 ))
                             : const EmptyWidget(),

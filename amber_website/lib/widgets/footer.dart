@@ -50,7 +50,7 @@ class Footer extends StatelessWidget {
                   height: isMobile ? 13.0 : 26.0,
                 ),
                 SelectableText(
-                  'Some Long Address for the sake of understanding the ui behaviour soeidhse sehue seodh sehsoefb sefosehfhsie',
+                  'Sac Road, near Chanchani Colony, Dhanbad, Jharkhand 826004',
                   style: TextStyle(
                       color: Colors.white, fontSize: isMobile ? 10.0 : null),
                 )

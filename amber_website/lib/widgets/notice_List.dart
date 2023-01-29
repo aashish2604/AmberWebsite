@@ -7,6 +7,10 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:intl/intl.dart';
 
+String convertNewLine(String content) {
+  return content.replaceAll(r'\n', '\n');
+}
+
 Future<void> showNoticeDialog(BuildContext context, NoticeModel data) {
   return showDialog<void>(
     context: context,
@@ -31,7 +35,7 @@ Future<void> showNoticeDialog(BuildContext context, NoticeModel data) {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SelectableText(data.description,
+                SelectableText(convertNewLine(data.description),
                     style: const TextStyle(fontSize: 18.0)),
                 const SizedBox(
                   height: 12.0,

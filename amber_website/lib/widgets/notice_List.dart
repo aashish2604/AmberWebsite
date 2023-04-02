@@ -81,8 +81,11 @@ class NoticeList extends StatelessWidget {
               homePageData.add(data[i]);
             }
             if (homePageData.isNotEmpty) {
+              homePageData.sort(((a, b) => a.time.compareTo(b.time)));
+              print(homePageData);
               return ListView.builder(
                   shrinkWrap: true,
+                  reverse: true,
                   itemCount: homePageData.length,
                   itemBuilder: (context, index) {
                     return ListTile(

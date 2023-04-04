@@ -51,7 +51,7 @@ class WardenColumn extends StatelessWidget {
                         image:
                             'https://firebasestorage.googleapis.com/v0/b/amberiitism.appspot.com/o/hec_members%2Fshivam_jha.jpg?alt=media&token=2b8b4e96-958c-4f16-94b5-cda344d685db',
                         committee: 'All',
-                        name: 'Shivam Jha',
+                        name: 'Shivam Kumar Jha',
                         email: 'subhshivam22.19je0775@mech.iitism.ac.in',
                         phoneNo: '7091844642'),
                   ),

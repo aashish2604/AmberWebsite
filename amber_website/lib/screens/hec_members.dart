@@ -91,8 +91,8 @@ class HecMembers extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  MemberCard(hecMembersModel: techCommittee[0]),
                                   MemberCard(hecMembersModel: techCommittee[1]),
+                                  MemberCard(hecMembersModel: techCommittee[0]),
                                 ],
                               )
                             : MemberList(data: techCommittee),
@@ -116,7 +116,7 @@ class HecMembers extends StatelessWidget {
                         ),
                         MemberList(data: sportsCommittee),
                         const SizedBox(
-                          height: 12.0,
+                          height: 40.0,
                         ),
                       ]),
                 );
@@ -143,6 +143,11 @@ class MemberList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int secretaryIndex =
+        data.indexWhere((element) => element.post == 'Secretary');
+    HecMembersModel secretaryData = data[secretaryIndex];
+    data.remove(secretaryData);
+    data.insert(0, secretaryData);
     return LayoutBuilder(builder: (context, constraints) {
       final SliverGridDelegateWithFixedCrossAxisCount gridOption =
           (constraints.maxWidth > 600)
